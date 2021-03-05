@@ -1,0 +1,92 @@
+{
+	"name": "Home",
+	"description": "",
+	"pages": [
+		{
+			"name": "Home",
+			"description": "",
+			"widgets": [
+				{
+					"visualization": {
+						"id": "viz.line"
+					},
+					"layout": {
+						"column": 1,
+						"row": 1,
+						"height": 5,
+						"width": 12
+					},
+					"title": "Power Delivered",
+					"rawConfiguration": {
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT average(gotsmart_active_power_delivered_l1_kw) FROM Metric TIMESERIES SINCE 1800 seconds ago COMPARE WITH 604800 seconds ago"
+							}
+						]
+					}
+				},
+				{
+					"visualization": {
+						"id": "viz.line"
+					},
+					"layout": {
+						"column": 1,
+						"row": 6,
+						"height": 3,
+						"width": 4
+					},
+					"title": "CPU core temperature",
+					"rawConfiguration": {
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT average(node_hwmon_temp_celsius) FROM Metric WHERE chip = 'platform_coretemp_0' TIMESERIES SINCE 1800 seconds ago"
+							}
+						]
+					}
+				},
+				{
+					"visualization": {
+						"id": "viz.line"
+					},
+					"layout": {
+						"column": 5,
+						"row": 6,
+						"height": 3,
+						"width": 4
+					},
+					"title": "Fritz data received",
+					"rawConfiguration": {
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT sum(gateway_wan_bytes_received) FROM Metric TIMESERIES SINCE 1800 seconds ago COMPARE WITH 604800 seconds ago"
+							}
+						]
+					}
+				},
+				{
+					"visualization": {
+						"id": "viz.line"
+					},
+					"layout": {
+						"column": 9,
+						"row": 6,
+						"height": 3,
+						"width": 4
+					},
+					"title": "Fritz bytes sent",
+					"rawConfiguration": {
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT sum(gateway_wan_bytes_sent) FROM Metric TIMESERIES SINCE 1800 seconds ago COMPARE WITH 604800 seconds ago"
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}
